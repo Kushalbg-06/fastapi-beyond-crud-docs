@@ -63,7 +63,7 @@ class UserService:
 
         new_user = User(**user_data_dict)
 
-        new_user.password_hash = generate_passwd_hash(user_data_dict["password"])
+        new_user.password_hash = generate_password_hash(user_data_dict["password"])
 
         session.add(new_user)
 

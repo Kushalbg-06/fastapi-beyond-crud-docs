@@ -100,7 +100,7 @@ Running the server will make your application available at this web address: `ht
 Following these steps means you've successfully created a basic FastAPI application with a greeting endpoint. You've also learned how to start the application using Uvicorn, which helps you develop more easily because it automatically reloads your code when you make changes.
 
 ## Choosing an API Client
-Depending on your choice, you may want to test your application with an Api Client, I will begin with [Insomnia](https://insomina.rest) which is a simple open source application for testing and development APIs.
+Depending on your choice, you may want to test your application with an Api Client, I will begin with [Insomnia](https://insomnia.rest/) which is a simple open source application for testing and development APIs.
 
 In insomnia, we shall create our simple request collection and we shall now see our response of `Hello World`.
 

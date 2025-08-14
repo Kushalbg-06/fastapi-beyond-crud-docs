@@ -804,12 +804,12 @@
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="go">`-- └── __init__.py</span>
 </code></pre></div>
 <p>Let us now add a <code>models.py</code> file in which we shall create the user account model. </p>
-<div class="highlight"><span class="filename">src/auth/models.py</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">sqlmodel</span> <span class="kn">import</span> <span class="n">SQLModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Column</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">sqlalchemy.dialects.postgresql</span> <span class="k">as</span> <span class="nn">pg</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span> <span class="nn">uuid</span>
+<div class="highlight"><span class="filename">src/auth/models.py</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Column</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy.dialects.postgresql</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">SQLModel</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">SQLModel</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;user_accounts&quot;</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">uid</span><span class="p">:</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
@@ -831,7 +831,7 @@
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="n">password_hash</span><span class="p">:</span> <span class="nb">str</span>
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    <span class="n">created_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">TIMESTAMP</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">))</span>
 <a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;User </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
 </code></pre></div>
 <p>Most of the code here was explained in <a href="../chapter5/">Chapter 5</a>, so I will only cover what is new.</p>
@@ -904,16 +904,16 @@
 <hr />
 <p>The <code>alembic.ini</code> file contains configurations for Alembic that enable it to interact with our database and project.</p>
 <p>Now that we understand our migration environment, let's set up SQLModel to work with Alembic. We start by editing <code>migrations/env.py</code>:</p>
-<div class="highlight"><span class="filename">migrations/env.py</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">asyncio</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">logging.config</span> <span class="kn">import</span> <span class="n">fileConfig</span>
+<div class="highlight"><span class="filename">migrations/env.py</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">logging.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">fileConfig</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">pool</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kn">from</span> <span class="nn">sqlalchemy.engine</span> <span class="kn">import</span> <span class="n">Connection</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kn">from</span> <span class="nn">sqlalchemy.ext.asyncio</span> <span class="kn">import</span> <span class="n">async_engine_from_config</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">pool</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Connection</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">async_engine_from_config</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="kn">from</span> <span class="nn">alembic</span> <span class="kn">import</span> <span class="n">context</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="kn">from</span> <span class="nn">sqlmodel</span> <span class="kn">import</span> <span class="n">SQLModel</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="kn">from</span> <span class="nn">src.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">alembic</span><span class="w"> </span><span class="kn">import</span> <span class="n">context</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLModel</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="n">database_url</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">DATABASE_URL</span>
@@ -953,11 +953,11 @@
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="sd">Create Date: ${create_date}</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
 <a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="kn">from</span> <span class="nn">alembic</span> <span class="kn">import</span> <span class="n">op</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="kn">import</span> <span class="nn">sqlmodel</span> <span class="c1"># ADD THIS</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">alembic</span><span class="w"> </span><span class="kn">import</span> <span class="n">op</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sa</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlmodel</span> <span class="c1"># ADD THIS</span>
 <a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
 <a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="o">...</span>
 </code></pre></div>
@@ -976,13 +976,13 @@
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="sd">Create Date: 2024-05-21 19:27:53.577277</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="kn">from</span> <span class="nn">alembic</span> <span class="kn">import</span> <span class="n">op</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="kn">import</span> <span class="nn">sqlmodel</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">alembic</span><span class="w"> </span><span class="kn">import</span> <span class="n">op</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sa</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlmodel</span>
 <a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="kn">from</span> <span class="nn">sqlalchemy.dialects</span> <span class="kn">import</span> <span class="n">postgresql</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.dialects</span><span class="w"> </span><span class="kn">import</span> <span class="n">postgresql</span>
 <a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
 <a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="c1"># revision identifiers, used by Alembic.</span>
 <a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="n">revision</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;8cf8276d5f3c&#39;</span>
@@ -991,7 +991,7 @@
 <a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="n">depends_on</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>
 <a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>
-<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="k">def</span> <span class="nf">upgrade</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="k">def</span><span class="w"> </span><span class="nf">upgrade</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>    <span class="c1"># ### commands auto generated by Alembic - please adjust! ###</span>
 <a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>    <span class="n">op</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="s1">&#39;user_accounts&#39;</span><span class="p">,</span>
 <a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>    <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">&#39;uid&#39;</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">UUID</span><span class="p">(),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
@@ -1008,7 +1008,7 @@
 <a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>    <span class="c1"># ### end Alembic commands ###</span>
 <a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>
 <a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a>
-<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="k">def</span> <span class="nf">downgrade</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="k">def</span><span class="w"> </span><span class="nf">downgrade</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>    <span class="c1"># ### commands auto generated by Alembic - please adjust! ###</span>
 <a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a>    <span class="n">op</span><span class="o">.</span><span class="n">drop_table</span><span class="p">(</span><span class="s1">&#39;user_accounts&#39;</span><span class="p">)</span>
 <a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>    <span class="c1"># ### end Alembic commands ###</span>

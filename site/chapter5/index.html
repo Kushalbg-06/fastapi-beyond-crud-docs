@@ -1079,10 +1079,10 @@
 </code></pre></div>
 After installing <code>pydantic-settings</code>, let us now go ahead and create a file called <code>config.py</code> at the root of our project. Inside that file, add the following code.</p>
 <div class="highlight"><span class="filename">src/config.py</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># inside src/config.py</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span> <span class="nn">pydantic_settings</span> <span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">SettingsConfigDict</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic_settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">SettingsConfigDict</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">class</span> <span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">DATABASE_URL</span><span class="p">:</span> <span class="nb">str</span> 
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">model_config</span> <span class="o">=</span> <span class="n">SettingsConfigDict</span><span class="p">(</span>
@@ -1111,9 +1111,9 @@ Let's observe how this configuration operates. We'll initiate a Python interpret
 </code></pre></div>
 <p>In the above demonstration, we start by importing the <code>Settings</code> class from the <code>config.py</code> file. Subsequently, we instantiate a <code>settings</code> object. Utilizing this <code>settings</code> object, we access and retrieve the <code>DATABASE_URL</code> setting. Upon calling it, our database URL will be displayed in the console. Note that this shall work because we currently have the <code>DATABASE_URL</code> setting in our <code>.env</code> file.</p>
 <p>Once this has been implemented, let us then add the following line to <code>config.py</code>.
-<div class="highlight"><span class="filename">Create a Config object</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">pydantic_settings</span> <span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">SettingsConfigDict</span>
+<div class="highlight"><span class="filename">Create a Config object</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic_settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">SettingsConfigDict</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">class</span> <span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">DATABASE_URL</span><span class="p">:</span> <span class="nb">str</span> 
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">model_config</span> <span class="o">=</span> <span class="n">SettingsConfigDict</span><span class="p">(</span>
@@ -1145,11 +1145,11 @@ We add this line so that we don't have to create a new instance of our <code>Set
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="go">    `-- └── book_data.py</span>
 </code></pre></div>
 Inside <code>models.py</code>, add the following code. 
-<div class="highlight"><span class="filename">Creating the book database model in src/books/models.py</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">sqlmodel</span> <span class="kn">import</span> <span class="n">SQLModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Column</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span> <span class="nn">sqlalchemy.dialects.postgresql</span> <span class="k">as</span> <span class="nn">pg</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">import</span> <span class="nn">uuid</span>
+<div class="highlight"><span class="filename">Creating the book database model in src/books/models.py</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Column</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy.dialects.postgresql</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">SQLModel</span> <span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">Book</span><span class="p">(</span><span class="n">SQLModel</span> <span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;books&quot;</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">uid</span><span class="p">:</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
@@ -1170,7 +1170,7 @@ Inside <code>models.py</code>, add the following code.
 <a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>    <span class="n">created_at</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">TIMESTAMP</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">))</span>
 <a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>    <span class="n">updated_at</span><span class="p">:</span><span class="n">datetime</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">sa_column</span><span class="o">=</span><span class="n">Column</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">TIMESTAMP</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">))</span>
 <a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>
-<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Book </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
 </code></pre></div></p>
 <h3 id="explanation_1">Explanation</h3>
@@ -1213,9 +1213,9 @@ Inside <code>models.py</code>, add the following code.
 </ul>
 <h2 id="connecting-to-databases">Connecting to databases</h2>
 <p>Let us add a directory in our <code>src</code> folder and call it <code>db</code> (short for database). we shall make it a normal Python package by adding the <code>__init__.py</code> file. After, we shall go ahead and add a Python file called <code>main.py</code> and we shall then add the following code.</p>
-<div class="highlight"><span class="filename">src/db/main.py</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span> <span class="nn">sqlmodel</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">from</span> <span class="nn">sqlalchemy.ext.asyncio</span> <span class="kn">import</span> <span class="n">AsyncEngine</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kn">from</span> <span class="nn">src.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<div class="highlight"><span class="filename">src/db/main.py</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncEngine</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">engine</span> <span class="o">=</span> <span class="n">AsyncEngine</span><span class="p">(</span><span class="n">create_engine</span><span class="p">(</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">url</span><span class="o">=</span><span class="n">Config</span><span class="o">.</span><span class="n">DATABASE_URL</span><span class="p">,</span>
@@ -1223,7 +1223,7 @@ Inside <code>models.py</code>, add the following code.
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">))</span>
 <a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
 <a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">initdb</span><span class="p">():</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">initdb</span><span class="p">():</span>
 <a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;create a connection to our db&quot;&quot;&quot;</span>
 <a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
 <a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
@@ -1237,9 +1237,9 @@ Inside <code>models.py</code>, add the following code.
 <ol>
 <li>
 <p>We begin by importing the necessary objects from the libraries they belong to.</p>
-<p><div class="highlight"><span class="filename">Importing necessary objects</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">sqlmodel</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">from</span> <span class="nn">sqlalchemy.ext.asyncio</span> <span class="kn">import</span> <span class="n">AsyncEngine</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kn">from</span> <span class="nn">src.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<p><div class="highlight"><span class="filename">Importing necessary objects</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncEngine</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
 </code></pre></div>
 <code>create_engine</code> is a function that enables to connect to a database when we need. <code>text</code> is a function that helps us generate plain text SQL statements that we can run against a database when we connect to it. <code>AsyncEngine</code> is a class for creating asynchronous engine objects. We shall look at how we shall use it in a moment. <code>Config</code> is the settings objects we created above. This will allow us access our configurations.</p>
 </li>
@@ -1261,7 +1261,7 @@ Inside <code>models.py</code>, add the following code.
 <ol>
 <li>
 <p>Finally, we create a function called <code>initdb</code> which is responsible for connecting to the database and executing a simple SQL statement. </p>
-<div class="highlight"><span class="filename">Connecting to the database and running an SQL Query</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">initdb</span><span class="p">():</span>
+<div class="highlight"><span class="filename">Connecting to the database and running an SQL Query</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">initdb</span><span class="p">():</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;create a connection to our db&quot;&quot;&quot;</span><span class="err">`</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
@@ -1278,14 +1278,14 @@ Inside <code>models.py</code>, add the following code.
 <h2 id="lifespan-events-in-fastapi">Lifespan events in FastAPI</h2>
 <p>In FastAPI, we have the flexibility to specify operations to execute prior to the application receiving requests, as well as when it concludes receiving them. This capability is crucial in situations where executing such operations may be resource-intensive and potentially degrade user experience. Examples of such operations include establishing database connections and loading AI models. For our demonstration, we'll focus on establishing a database connection before the application starts. If this concept isn't clear, let's start by examining a brief example.</p>
 <p>In the <code>__init__.py</code> file at the root of the <code>src</code> directory, let us modify the code as shown below.</p>
-<div class="highlight"><span class="filename">src/__init__.py</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">from</span> <span class="nn">src.books.routes</span> <span class="kn">import</span> <span class="n">book_router</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">asynccontextmanager</span>
+<div class="highlight"><span class="filename">src/__init__.py</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.books.routes</span><span class="w"> </span><span class="kn">import</span> <span class="n">book_router</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">asynccontextmanager</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1">#the lifespan event</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nd">@asynccontextmanager</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">lifespan</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">):</span>    
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lifespan</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">):</span>    
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Server is starting...&quot;</span><span class="p">)</span>
 <a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="k">yield</span>
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;server is stopping&quot;</span><span class="p">)</span>
@@ -1327,11 +1327,11 @@ At the server's start, you'll observe the text <code>server is starting</code> p
 <p>Now that we grasp how lifespan events function, let's integrate our <code>init_db</code> function to establish a connection to the PostgreSQL database.</p>
 <p>Update the lifespan function in <code>src/__init__.py</code> to include the following code.</p>
 <p><div class="highlight"><span class="filename">Connecting to the database using the lifespan function</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">...</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">from</span> <span class="nn">src.db.main</span> <span class="kn">import</span> <span class="n">initdb</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.db.main</span><span class="w"> </span><span class="kn">import</span> <span class="n">initdb</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nd">@asynccontextmanager</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">lifespan</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">):</span>    
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lifespan</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">):</span>    
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="k">await</span> <span class="n">initdb</span><span class="p">()</span>
 <a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="k">yield</span>
 <a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;server is stopping&quot;</span><span class="p">)</span>
@@ -1349,11 +1349,11 @@ This code establishes a connection to the database and executes a SELECT stateme
 <h2 id="creating-database-tables">Creating database tables</h2>
 <p>Let's update the code in <code>src/db/main.py</code> to incorporate our custom lifespan event into the database model, utilizing the <code>Book</code> model. We'll then utilize SQLmodel to generate the necessary database tables based on this model.</p>
 <div class="highlight"><span class="filename">Creating the database table using SQLModel</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Inside src/db/main.py</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">from</span> <span class="nn">sqlmodel</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kn">from</span> <span class="nn">sqlalchemy.ext.asyncio</span> <span class="kn">import</span> <span class="n">AsyncEngine</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="kn">from</span> <span class="nn">src.config</span> <span class="kn">import</span> <span class="n">Config</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="kn">from</span> <span class="nn">sqlmodel</span> <span class="kn">import</span> <span class="n">SQLModel</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="kn">from</span> <span class="nn">src.books.models</span> <span class="kn">import</span> <span class="n">Book</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncEngine</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sqlmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLModel</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.books.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Book</span>
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
 <a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">engine</span> <span class="o">=</span> <span class="n">AsyncEngine</span><span class="p">(</span><span class="n">create_engine</span><span class="p">(</span>
@@ -1362,7 +1362,7 @@ This code establishes a connection to the database and executes a SELECT stateme
 <a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="p">))</span>
 <a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
 <a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>
-<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">initdb</span><span class="p">():</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">initdb</span><span class="p">():</span>
 <a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;create our database models in the database&quot;&quot;&quot;</span>
 <a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>
 <a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>

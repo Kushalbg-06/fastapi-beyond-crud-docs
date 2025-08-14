@@ -985,118 +985,120 @@
 
 <h1 id="creating-a-simple-web-server">Creating a Simple Web Server</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Now that we have FastAPI installed, we are going to create a simple web server on whicn our application shall run using FastAPI.</p>
-<p>At this stage, our directory only contains our virtual environment directory <code>env</code> and <code>requirements.txt</code> as shown below as follows:
+<p>Now that we have FastAPI installed, we are going to create a simple web server on which our application shall run using FastAPI.</p>
+<p>At this stage, our directory only contains our virtual environment directory <code>env</code> and <code>requirements.txt</code> as shown below as follows:</p>
 <div class="highlight"><span class="filename">Current directory structure</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">└── env</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">└── requirements.txt</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Let's create a file named <code>main.py</code> and populate it with the following code:</p>
-<div class="highlight"><span class="filename">main.py</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<div class="highlight"><span class="filename">main.py</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">}</span>
 </code></pre></div>
 <p>In this code snippet, we perform the following actions:</p>
 <h3 id="creating-a-fastapi-instance"><strong>Creating a FastAPI instance:</strong></h3>
 <p>We have imported the <code>FastAPI</code> class from the <code>fastapi</code> package. This class serves as the primary entry point for all FastAPI applications. Through it we can get access to various FastAPI features such as routes , middleware, exception handlers and path operations.</p>
-<p>We then create an instance of the <code>FastAPI</code> class named <code>app</code>. The main FastAPI instance can be called anything as long as it is a valid Python name. </p>
-<div class="highlight"><span class="filename">Creating the FastAPI instance</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<p>We then create an instance of the <code>FastAPI</code> class named <code>app</code>. The main FastAPI instance can be called anything as long as it is a valid Python name.</p>
+<div class="highlight"><span class="filename">Creating the FastAPI instance</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="creating-an-api-route"><strong>Creating an API Route:</strong></h3>
 <p>We define our first API route by creating a function named <code>read_root</code>. This function, when accessed, will return a JSON message containing "Hello World!".</p>
 <div class="highlight"><span class="filename">Your first API endpoint</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">}</span>
 </code></pre></div>
-<p>The <code>@app</code> decorator associates the function with the HTTP GET method  via the <code>get</code> method. We then provide the path (route) of the root path (<code>/</code>). This means that whenever the <code>/</code> route is accessed, the defined message will be returned.</p>
+<p>The <code>@app</code> decorator associates the function with the HTTP GET method via the <code>get</code> method. We then provide the path (route) of the root path (<code>/</code>). This means that whenever the <code>/</code> route is accessed, the defined message will be returned.</p>
 <p>All HTTP methods such as <code>post</code>,<code>put</code>,<code>head</code>,<code>patch</code>, <code>delete</code>, <code>trace</code> and <code>options</code> are all available on the <code>@app</code> decorator.</p>
 <h3 id="running-the-fastapi-application"><strong>Running the FastAPI Application:</strong></h3>
 <p>To run our FastAPI application, we shall use the <code>fastapi</code>command we introduced in the previous chapter. Open a terminal and execute the following command within the virtual environment:</p>
 <div class="highlight"><span class="filename">Running the server with the FastAPI CLI</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp gp-VirtualEnv">(env)</span><span class="gp">$ </span>fastapi<span class="w"> </span>dev<span class="w"> </span>main.py
 </code></pre></div>
-<p>The <code>fastapi dev</code> command enables us to execute our FastAPI application in development mode. This feature facilitates running our application with auto-reload functionality, ensuring that any modifications we make are automatically applied, restarting the server accordingly. It operates by identifying the FastAPI instance within the specified module or Python package, which in our scenario is <code>main.py</code>, where we have defined the app object. When we initiate our application, it will display the following output.
-<div class="highlight"><span class="filename">terminal ouput</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">INFO     Using path main.py                                                                              </span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">INFO     Resolved absolute path /home/jod35/Documents/fastapi-beyond-CRUD/main.py                         </span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="go">INFO     Searching for package file structure from directories with __init__.py files                 </span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="go">INFO     Importing from /home/jod35/Documents/fastapi-beyond-CRUD                                     </span>
+<p>The <code>fastapi dev</code> command enables us to execute our FastAPI application in development mode. This feature facilitates running our application with auto-reload functionality, ensuring that any modifications we make are automatically applied, restarting the server accordingly. It operates by identifying the FastAPI instance within the specified module or Python package, which in our scenario is <code>main.py</code>, where we have defined the app object. When we initiate our application, it will display the following output.</p>
+<div class="highlight"><span class="filename">terminal ouput</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">INFO     Using path main.py</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">INFO     Resolved absolute path /home/jod35/Documents/fastapi-beyond-CRUD/main.py</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="go">INFO     Searching for package file structure from directories with __init__.py files</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="go">INFO     Importing from /home/jod35/Documents/fastapi-beyond-CRUD</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="go"> ╭─ Python package file structure ─╮                                                                  </span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="go"> │                                 │                                                                  </span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="go"> │      🐍 main.py                 │                                                                  </span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="go"> │                                 │                                                                  </span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="go"> ╰─────────────────────────────────╯                                                                  </span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="go"> ╭─ Python package file structure ─╮</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="go"> │                                 │</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="go"> │      🐍 main.py                 │</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="go"> │                                 │</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="go"> ╰─────────────────────────────────╯</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="go">INFO     Importing module main.py                                                                       </span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="go">INFO     Found importable FastAPI app                                                                 </span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="go">INFO     Importing module main.py</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="go">INFO     Found importable FastAPI app</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="go"> ╭─ Importable FastAPI app ─╮                                                                         </span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="go"> │                          │                                                                         </span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="go"> │  from main import app    │                                                                         </span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="go"> │                          │                                                                         </span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="go"> ╰──────────────────────────╯                                                                         </span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="go"> ╭─ Importable FastAPI app ─╮</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="go"> │                          │</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="go"> │  from main import app    │</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="go"> │                          │</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="go"> ╰──────────────────────────╯</span>
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="go">INFO     Using import string main:app                                                                  </span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="go">INFO     Using import string main:app</span>
 <a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="go"> ╭────────── FastAPI CLI - Development mode ───────────╮                                              </span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="go"> │                                                     │                                              </span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="go"> │  Serving at: http://127.0.0.1:8000                  │                                              </span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="go"> │                                                     │                                              </span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="go"> │  API docs: http://127.0.0.1:8000/docs               │                                              </span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="go"> │                                                     │                                              </span>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="go"> │  Running in development mode, for production use:   │                                              </span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="go"> │                                                     │                                              </span>
-<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="go"> │  fastapi run                                        │                                              </span>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="go"> │                                                     │    </span>
-</code></pre></div></p>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="go"> ╭────────── FastAPI CLI - Development mode ───────────╮</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="go"> │                                                     │</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="go"> │  Serving at: http://127.0.0.1:8000                  │</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="go"> │                                                     │</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="go"> │  API docs: http://127.0.0.1:8000/docs               │</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="go"> │                                                     │</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="go"> │  Running in development mode, for production use:   │</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="go"> │                                                     │</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="go"> │  fastapi run                                        │</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="go"> │                                                     │</span>
+</code></pre></div>
 <p>Running the server will make your application available at this web address: <code>http://localhost:8000</code>.</p>
 <p>Following these steps means you've successfully created a basic FastAPI application with a greeting endpoint. You've also learned how to start the application using Uvicorn, which helps you develop more easily because it automatically reloads your code when you make changes.</p>
 <h2 id="choosing-an-api-client">Choosing an API Client</h2>
-<p>Depending on your choice, you may want to test your application with an Api Client, I will begin with <a href="https://insomina.rest">Insomnia</a> which is a simple open source application for testing and development APIs.</p>
+<p>Depending on your choice, you may want to test your application with an Api Client, I will begin with <a href="https://insomnia.rest/">Insomnia</a> which is a simple open source application for testing and development APIs.</p>
 <p>In insomnia, we shall create our simple request collection and we shall now see our response of <code>Hello World</code>.</p>
 <ol>
 <li>
 <p>Create a new request collection
-<a class="glightbox" href="../img/img1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Creatina request collection" src="../img/img1.png" /></a></p>
+   <a class="glightbox" href="../img/img1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Creatina request collection" src="../img/img1.png" /></a></p>
 </li>
 <li>
 <p>Name the request collection
-<a class="glightbox" href="../img/img2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Name of the collection" src="../img/img2.png" /></a></p>
+   <a class="glightbox" href="../img/img2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Name of the collection" src="../img/img2.png" /></a></p>
 </li>
 <li>
 <p>Create an HTTP request
-<a class="glightbox" href="../img/img3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Create an HTTP request" src="../img/img3.png" /></a></p>
+   <a class="glightbox" href="../img/img3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Create an HTTP request" src="../img/img3.png" /></a></p>
 </li>
 <li>
 <p>Make a request
-<a class="glightbox" href="../img/img4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Make a request" src="../img/img4.png" /></a></p>
+   <a class="glightbox" href="../img/img4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Make a request" src="../img/img4.png" /></a></p>
 </li>
 </ol>
 <p>And just like that, you have created your FastAPI application, run it and even made your HTTP request using an HTTP client.</p>
 <h2 id="managing-requests-and-responses">Managing Requests and Responses</h2>
-<p>There are very many ways that clients can pass request data to a FastAPI API route. These include:
-- Path Parameters
-- Query Parameters
-- Headers e.t.c.</p>
+<p>There are very many ways that clients can pass request data to a FastAPI API route. These include:</p>
+<ul>
+<li>Path Parameters</li>
+<li>Query Parameters</li>
+<li>Headers e.t.c.</li>
+</ul>
 <p>Through such ways, we can obtain data from incoming requests to our APIs.</p>
 <h3 id="parameter-type-declarations">Parameter type declarations</h3>
-<p>All parameters in a FastAPI request are requiresd to have a type declaration via <em>type hints</em>. Primitive Python types such (<code>None</code>,<code>int</code>,<code>str</code>,<code>bool</code>,<code>float</code>), container types such as (<code>dict</code>,<code>tuples</code>,<code>dict</code>,<code>set</code>) and some other complex types are all supported. </p>
-<p>Additionally FastAPI also allows all types present within Python's <code>typing</code> module. 
+<p>All parameters in a FastAPI request are required to have a type declaration via <em>type hints</em>. Primitive Python types such (<code>None</code>,<code>int</code>,<code>str</code>,<code>bool</code>,<code>float</code>), container types such as (<code>dict</code>,<code>tuples</code>,<code>dict</code>,<code>set</code>) and some other complex types are all supported.</p>
+<p>Additionally FastAPI also allows all types present within Python's <code>typing</code> module.
 These data types represent common conventions in Python and are utilized for variable type annotations. They facilitate type checking and model validation during compilation. Examples include <code>Optional</code>, <code>List</code>, <code>Dict</code>, <code>Set</code>, <code>Union</code>, <code>Tuple</code>, <code>FrozenSet</code>, <code>Iterable</code>, and <code>Deque</code>.</p>
 <h3 id="path-parameters">Path Parameters</h3>
 <p>All request data supplied in the endpoint URL of a FastAPI API is acquired through a path parameter, thus rendering URLs dynamic. FastAPI adopts curly braces (<code>{}</code>) to denote path parameters when defining a URL. Once enclosed within the braces, FastAPI requires that they be provided as parameters to the route handler functions we establish for those paths.</p>
 <div class="highlight"><span class="filename">path parameters</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">#inside main.py</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/greet/</span><span class="si">{username}</span><span class="s1">&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">username</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">username</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>   <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 </code></pre></div>
 <p>In this example the <code>greet()</code> route handler function will require <code>username</code> which is annotated with <code>str</code> indicating that the username shall be a string. Sending a greetings to the user "jona" shall return the response shown below.</p>
 <p><a class="glightbox" href="../img/img14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Greetings a User with a username" src="../img/img14.png" /></a></p>
-<p>Just in we make a request to the route without the param, 
+<p>Just in we make a request to the route without the param,
 <a class="glightbox" href="../img/img142.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Greeting without a username specified" src="../img/img142.png" /></a></p>
 <h3 id="query-parameters">Query Parameters</h3>
 <p>These are key-value pairs provided at the end of a URL, indicated by a question mark (<code>?</code>). Just like path parameters, they also take in request data. Whenever we want to provide multiple query parameters, we use the ampersand (<code>&amp;</code>) sign.</p>
@@ -1106,10 +1108,10 @@ These data types represent common conventions in Python and are utilized for var
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>   <span class="s2">&quot;Jerry&quot;</span><span class="p">,</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>   <span class="s2">&quot;Joey&quot;</span><span class="p">,</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>   <span class="s2">&quot;Phil&quot;</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">]</span> 
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">]</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/search&#39;</span><span class="p">)</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">search_for_user</span><span class="p">(</span><span class="n">username</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">search_for_user</span><span class="p">(</span><span class="n">username</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>   <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">user_list</span><span class="p">:</span>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="k">if</span> <span class="n">username</span> <span class="ow">in</span> <span class="n">user_list</span> <span class="p">:</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;details for user </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
@@ -1118,21 +1120,21 @@ These data types represent common conventions in Python and are utilized for var
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;User Not Found&quot;</span><span class="p">}</span>
 </code></pre></div>
 <p>In this example, we've set up a route for searching users within a simple list. Notice that there are no path parameters specified in the route's URL. Instead, we're passing the <code>username</code> directly to our route handler, <code>search_for_user</code>. In FastAPI, any parameter passed to a route handler, like <code>search_for_user</code>, and is not provided in the path as a path param is treated as a query parameter. Therefore, to access this route, we need to use <code>/search?username=sample_name</code>, where <code>username</code> is the key and <code>sample_name</code> is the value.</p>
-<p>Let us save and test the example above. Saecrning for a user who exists returns the needed response.</p>
+<p>Let us save and test the example above. Searching for a user who exists returns the needed response.</p>
 <p><a class="glightbox" href="../img/img15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Searching for a user who doesnot exist" src="../img/img15.png" /></a></p>
-<p>And searching for a user who does not exist returns the following response. 
+<p>And searching for a user who does not exist returns the following response.
 <a class="glightbox" href="../img/img16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Searching a user who does not exist" src="../img/img16.png" /></a></p>
 <h3 id="optional-parameters">Optional Parameters</h3>
-<p>There may also be cases when the API route can operate as needed even in the presence of a path or query param. In this case, we can make the parameters optional when annotating their types in the route handler functions. Forexample, our first example can be modified to the following:
-<div class="highlight"><span class="filename">Optional Query Params</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<p>There may also be cases when the API route can operate as needed even in the presence of a path or query param. In this case, we can make the parameters optional when annotating their types in the route handler functions. For example, our first example can be modified to the following:</p>
+<div class="highlight"><span class="filename">Optional Query Params</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/greet/&#39;</span><span class="p">)</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">username</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;User&quot;</span><span class="p">):</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">username</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;User&quot;</span><span class="p">):</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>   <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
-</code></pre></div></p>
-<p>This time, we've made the <code>username</code> path parameter optional. We achieved this by removing it from the route definition. Additionally, we updated the type annotation for the <code>username</code> parameter in the <code>greet</code> route handler function to make it an optional string, with a default value of "User". To accomplish this, we're using the <code>Optional</code> type from Python's <code>typing</code> module.
+</code></pre></div>
+<p>This time, we've made the <code>username</code> path parameter optional. We achieved this by removing it from the route definition. Additionally, we updated the type annotation for the <code>username</code> parameter in the <code>greet</code> route handler function to make it an optional string, with a default value of "User". To accomplish this, we're using the <code>Optional</code> type from Python's <code>typing</code> module.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">username</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>When we save the example, we shall test it and get the following response.
 <a class="glightbox" href="../img/img17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="greeting a user with a username as a query param" src="../img/img17.png" /></a></p>
 <p>Note that this time if we do not provide the <code>username</code>, we shall get the default username of "User".
@@ -1140,16 +1142,16 @@ These data types represent common conventions in Python and are utilized for var
 <h2 id="request-body">Request Body</h2>
 <p>Frequently, clients need to send data to the server for tasks like creating or updating resources through methods like POST, PATCH, PUT, DELETE, or for various other operations. FastAPI simplifies this process by enabling you to define a Pydantic model to establish the structure of the data being sent. Furthermore, it aids in validating data types using type hints. Let's delve into a straightforward example to illustrate this concept.</p>
 <div class="highlight"><span class="filename">Request Body</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># inside main.py</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># the User model</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">class</span> <span class="nc">UserSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>   <span class="n">username</span><span class="p">:</span><span class="nb">str</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>   <span class="n">email</span><span class="p">:</span><span class="nb">str</span>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
 <a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
 <a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/create_user&quot;</span><span class="p">)</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">user_data</span><span class="p">:</span><span class="n">UserSchema</span><span class="p">):</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">user_data</span><span class="p">:</span><span class="n">UserSchema</span><span class="p">):</span>
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>   <span class="n">new_user</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>      <span class="s2">&quot;username&quot;</span> <span class="p">:</span> <span class="n">user_data</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">user_data</span><span class="o">.</span><span class="n">email</span>
@@ -1159,23 +1161,23 @@ These data types represent common conventions in Python and are utilized for var
 <a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>
 <a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>   <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;User Created successfully&quot;</span><span class="p">,</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">new_user</span><span class="p">}</span>
 </code></pre></div>
-<p>What we have done in the above example is to create a Pydantic model by inheriting Pydantic's <code>BaseModel</code> class. On this class we have defined attributes <code>username</code> and <code>email</code> and also annotated them with the <code>str</code> type. 
-<div class="highlight"><span class="filename">A simple Pydantic model</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">class</span> <span class="nc">UserSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<p>What we have done in the above example is to create a Pydantic model by inheriting Pydantic's <code>BaseModel</code> class. On this class we have defined attributes <code>username</code> and <code>email</code> and also annotated them with the <code>str</code> type.</p>
+<div class="highlight"><span class="filename">A simple Pydantic model</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>   <span class="n">username</span><span class="p">:</span><span class="nb">str</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>   <span class="n">email</span><span class="p">:</span><span class="nb">str</span>
-</code></pre></div></p>
-<p>Following that, have crafted an API route intended to handle a POST request at /create_user. The handler for this route accepts a parameter representing the user_data obtained from the client, with its type annotated as the Pydantic model UserSchema.
+</code></pre></div>
+<p>Following that, have crafted an API route intended to handle a POST request at /create_user. The handler for this route accepts a parameter representing the user_data obtained from the client, with its type annotated as the Pydantic model UserSchema.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">create_user</span><span class="p">(</span><span class="n">user_data</span><span class="p">:</span><span class="n">UserSchema</span><span class="p">)</span>
-</code></pre></div></p>
-<p>Using this <code>user_data</code>, we construct a new_user dictionary and append it to our users list.
+</code></pre></div>
+<p>Using this <code>user_data</code>, we construct a new_user dictionary and append it to our users list.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>   <span class="n">new_user</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>      <span class="s2">&quot;username&quot;</span> <span class="p">:</span> <span class="n">user_data</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">user_data</span><span class="o">.</span><span class="n">email</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>   <span class="p">}</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>   <span class="n">users</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_user</span><span class="p">)</span>
-</code></pre></div></p>
-<p>We finally return a response with the newly created <code>new_user</code> dictionary. </p>
+</code></pre></div>
+<p>We finally return a response with the newly created <code>new_user</code> dictionary.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>   <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;User Created successfully&quot;</span><span class="p">,</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">new_user</span><span class="p">}</span>
 </code></pre></div>
 <p>Let's test this. If we make the request without providing the request body, we should receive the following response.
@@ -1191,9 +1193,11 @@ These data types represent common conventions in Python and are utilized for var
 <p>There can indeed be scenarios that necessitate the use of all the features we've discussed. You can have an API route that accepts path, query, and optional parameters, and FastAPI is capable of handling such complexity seamlessly.</p>
 <h3 id="request-headers">Request Headers</h3>
 <p>During a request-response transaction, the client not only sends parameters to the server but also provides information about the context of the request's origin. This contextual information is crucial as it enables the server to customize the type of response it returns to the client.</p>
-<p>Common request headers include:
-- <code>User-Agent</code>: This string allows network protocol peers to identify the application responsible for the request, the operating system it's running on, or the version of the software being used.</p>
+<p>Common request headers include:</p>
 <ul>
+<li>
+<p><code>User-Agent</code>: This string allows network protocol peers to identify the application responsible for the request, the operating system it's running on, or the version of the software being used.</p>
+</li>
 <li>
 <p><code>Host</code>: This specifies the domain name of the server, and (optionally) the TCP port number on which the server is listening.</p>
 </li>
@@ -1210,13 +1214,13 @@ These data types represent common conventions in Python and are utilized for var
 <p><code>Referer</code>: This specifies the address of the previous web page from which a link to the currently requested page was followed.</p>
 </li>
 <li>
-<p><code>Connection</code>: This header controls whether the network connection stays open after the current transaction finishes. </p>
+<p><code>Connection</code>: This header controls whether the network connection stays open after the current transaction finishes.</p>
 </li>
 </ul>
 <p>To access such headers, FastAPI provides us with the <code>Header</code> function giving us the ability to get the values of these headers using the exact names but in a snake-case syntax forexample, <code>User-Agent</code> is <code>user_agent</code>, <code>Accept-Encoding</code> is <code>accept_encoding</code> and so on. Let us take a look at a small code example.</p>
-<p><div class="highlight"><span class="filename">Request Headers</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># inside main.py</span>
+<div class="highlight"><span class="filename">Request Headers</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># inside main.py</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/get_headers&#39;</span><span class="p">)</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">get_all_request_headers</span><span class="p">(</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_all_request_headers</span><span class="p">(</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">user_agent</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Header</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">accept_encoding</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Header</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="n">referer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Header</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
@@ -1234,7 +1238,7 @@ These data types represent common conventions in Python and are utilized for var
 <a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>
 <a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>    <span class="k">return</span> <span class="n">request_headers</span>
 </code></pre></div>
-We've started by importing the <code>Header</code> function from FastAPI into our route handler. Each header has been added and designated as an optional string. A default value has been assigned by invoking the <code>Header</code> function with <code>None</code> as a parameter. 
+<p>We've started by importing the <code>Header</code> function from FastAPI into our route handler. Each header has been added and designated as an optional string. A default value has been assigned by invoking the <code>Header</code> function with <code>None</code> as a parameter.
 Using the <code>None</code> argument allows the Header() function to declare the variable optionally, which aligns with best practices.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>    <span class="n">user_agent</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Header</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>

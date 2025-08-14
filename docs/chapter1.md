@@ -53,7 +53,7 @@ At this point, your directory structure should look like this:
 Now, let us install FastAPI within the virtual environment. We shall install FastAPI using `pip` with the following command.
 
 ```console
-(env) pip install fastapi 'fastapi[standard]'
+(env) pip install "fastapi[standard]"
 ```
 
 ### 4. Freeze Dependencies

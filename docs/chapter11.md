@@ -963,9 +963,9 @@ class TagService:
         for k, v in update_data_dict.items():
             setattr(tag, k, v)
 
-            await session.commit()
+        await session.commit()
 
-            await session.refresh(tag)
+        await session.refresh(tag)
 
         return tag
 

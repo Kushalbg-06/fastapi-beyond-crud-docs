@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "mkdocs>=1.6.1",
+    "mkdocs-codeinclude-plugin>=0.2.1",
+    "mkdocs-get-deps>=0.2.0",
+    "mkdocs-glightbox>=0.5.2",
+    "mkdocs-material>=9.7.1",
+]

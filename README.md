@@ -16,22 +16,28 @@ This repository contains the source code for the course website.
 ## Prerequisites
 Before starting, make sure you have the following installed:
 
-- Python 3.x
+- Python 3.10+
 
 ## Project Setup
 To set up the project, follow these steps:
 
-1. **Clone the repository:**
+1. Fork the Repository
+
+Click the **Fork** button at the top-right corner of the repository page on GitHub.
+
+---
+
+2. **Clone the repository:**
     ```bash
-    git clone https://github.com/jod35/fastapi-beyond-crud-docs.git
+    git clone https://github.com/YOUR_USERNAME/fastapi-beyond-crud-docs.git
     ```
 
-2. **Navigate into the project directory:**
+3. **Navigate into the project directory:**
     ```bash
     cd fastapi-beyond-crud-docs
     ```
 
-3. **Create a virtual environment:**
+4. **Create a virtual environment:**
    - On macOS/Linux:
      ```bash
      python3 -m venv venv
@@ -41,7 +47,7 @@ To set up the project, follow these steps:
      python -m venv venv
      ```
 
-4. **Activate the virtual environment:**
+5. **Activate the virtual environment:**
    - On macOS/Linux:
      ```bash
      source venv/bin/activate
@@ -51,14 +57,35 @@ To set up the project, follow these steps:
      venv\Scripts\activate
      ```
 
-5. **Install the required dependencies:**
+6. **Install the required dependencies:**
     ```bash
-    pip install -r requirements.txt
+    python -m pip install -r requirements.txt
     ```
 
-6. **Run the application:**
+7. **Run the application:**
     ```bash
     mkdocs serve
     ```
+    Once the server starts successfully, open your browser and visit:
+
+    ```text
+    http://127.0.0.1:8000/
+    ```
+
+---
+
 
 Your application should now be up and running within the virtual environment.
+
+## Project Structure
+
+```text
+fastapi-beyond-crud-docs/
+│
+├── docs/
+├── mkdocs.yml
+├── requirements.txt
+└── README.md
+```
+
+---
